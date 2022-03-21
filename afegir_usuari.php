@@ -6,26 +6,26 @@
 	ini_set('display_errors', 0);
 	#Dades de la nova entrada
 	#
-	$uid=$_POST['uid'];
-	$unorg=$_POST['tipusUser'];
-	$num_id=$_POST['uidNumber'];
-	$grup=$_POST['gidNumber'];
-	$dir_pers=$_POST['directori'];
-	$sh=$_POST['shell'];
-	$cn=$_POST['cn'];
-	$sn=$_POST['sn'];
-	$nom=$_POST['nom'];
-	$mobil=$_POST['mobile'];
-	$adressa=$_POST['address'];
-	$telefon=$_POST['tel'];
-	$titol=$_POST['titol'];
-	$descripcio=$_POST['desc'];
-	$objcl=array('inetOrgPerson','organizationalPerson','person','posixAccount','shadowAccount','top');
+	$uid = $_POST["uid"];
+	$unorg = $_POST["tipusUser"];
+	$num_id = $_POST["uidNumber"];
+	$grup = $_POST["gidNumber"];
+	$dir_pers = $_POST["directori"];
+	$sh = $_POST["shell"];
+	$cn = $_POST["cn"];
+	$sn = $_POST["sn"];
+	$nom = $_POST["nom"];
+	$mobil = $_POST["mobile"];
+	$adressa = $_POST["address"];
+	$telefon = $_POST["tel"];
+	$titol = $_POST["titol"];
+	$descripcio = $_POST["desc"];
+	$objcl = array('inetOrgPerson','organizationalPerson','person','posixAccount','shadowAccount','top');
 	#
 	#Afegint la nova entrada
 	$domini = 'dc=fjeclot,dc=net';
 	$opcions = [
-        'host' => 'zend-dacomo.fjeclot.net',
+        'host' => 'zend-jubaal.fjeclot.net',
 		'username' => "cn=admin,$domini",
    		'password' => 'fjeclot',
    		'bindRequiresDn' => true,
@@ -49,6 +49,6 @@
 	Attribute::setAttribute($nova_entrada, 'telephoneNumber', $telefon);
 	Attribute::setAttribute($nova_entrada, 'title', $titol);
 	Attribute::setAttribute($nova_entrada, 'description', $descripcio);
-	$dn = 'uid='.$uid.',ou='.$unorg.',dc=fjeclot,dc=net';
+	$dn = 'uid='.$uid.','.$unorg.',dc=fjeclot,dc=net';
 	if($ldap->add($dn, $nova_entrada)) echo "Usuari creat";	
 ?>

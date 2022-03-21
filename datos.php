@@ -21,6 +21,7 @@
 
 	<p>AFEGIR USUARI</p>
 	<form action="./afegir_usuari.php" method="POST">
+		<label>Usuario a modificar</label>
 		UID:<input type="text" name="uid" required><br>
 		UO:
 		<select name="tipusUser">
@@ -28,6 +29,7 @@
 			<option value="ou=desenvolupadors">Desenvolupadors</option>
 			<option value="ou=usuaris">Usuaris</option>
 		</select><br>
+		<label>Usuario a modificar</label>
 		uidNumber:<input type="text" name="uidNumber" required><br>
 		gidNumber:<input type="text" name="gidNumber" placeholder="us=3000, dev=2500, admin=2000"required><br>
 		Directori Personal:<input type="text" name="directori" required placeholder="/home/usr2/"><br>
@@ -46,25 +48,46 @@
 	<br>
 
 	<p>ESBORRAR USUARI</p>
-	<form action="./esborrar_usuari.php" method="POST">
-		<label for="id">Indica el id d'usuari(uid):</label><br> <input
-			type="text" name="id"><br> <br> <label for="fname">Indica la unitat
-			organitzativa</label><br> <select>
-			<option value="ou=administradors">Administradors</option>
-			<option value="ou=desenvolupadors">Desenvolupadors</option>
-			<option value="ou=usuaris">Usuaris</option>
-		</select> <input type="submit" value="Envia" />
+	<form action="./eliminar_usuari.php" method="POST">
+		<label for="id">Indica el id d'usuari(uid):</label><br> 
+		<input type="text" name="id"><br> <br> 
+		<label for="fname">Indica la unitat organitzativa</label><br> 
+		<select name="tipusUser">
+    		<option value="ou=administradors">Administradors</option>
+    		<option value="ou=desenvolupadors">Desenvolupadors</option>
+    		<option value="ou=usuaris">Usuaris</option>
+		</select> 
+		<input type="submit" value="Envia" />
 	</form>
+	<br>
+	<br>
 	
 	<p>MODIFICAR ATRIBUT USUARI</p>
-	<form action="./modificar_atribut.php" method="POST">
-		<label for="id">Indica el id d'usuari(uid):</label><br> <input
-			type="text" name="id"><br> <br> <label for="fname">Indica la unitat
-			organitzativa</label><br> <select>
+	<form action="./modificar_usuari.php" method="POST">
+		<label for="id">Indica el id d'usuari(uid):</label><br> 
+		<input type="text" name="id"><br><br> 
+		<label for="fname">Indica la unitat organitzativa</label><br>
+		<select name="tipusUser">
 			<option value="ou=administradors">Administradors</option>
 			<option value="ou=desenvolupadors">Desenvolupadors</option>
 			<option value="ou=usuaris">Usuaris</option>
-		</select> <input type="submit" value="Envia" />
+		</select>
+		<div>
+            <input type="radio" name="atribut" value="uidNumber"/><span>uidNumber</span>
+        	<input type="radio" name="atribut" value="gidNumber"/><span>gidNumber</span>
+            <input type="radio" name="atribut" value="homeDirectory"/><span>Directori personal</span>
+        	<input type="radio" name="atribut" value="loginShell"/><span>Shell</span>
+            <input type="radio" name="atribut" value="cn"/><span>cn</span>
+            <input type="radio" name="atribut" value="sn"/><span>sn</span>
+            <input type="radio" name="atribut" value="givenName"/><span>givenName</span>
+            <input type="radio" name="atribut" value="postalAdress"/><span>PostalAdress</span>
+            <input type="radio" name="atribut" value="mobile"/><span>mobile</span>
+            <input type="radio" name="atribut" value="telephoneNumber"/><span>telephoneNumber</span>
+            <input type="radio" name="atribut" value="title"/><span>title</span>
+            <input type="radio" name="atribut" value="description"/><span>description</span>
+  		</div>
+  		<input type="text" name="nouatribut" placeholder="Contingut" required />
+   		<input type="submit" value ="Envia" />
 	</form>
 </body>
 </HTML>
